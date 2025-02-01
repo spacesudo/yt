@@ -1,0 +1,3 @@
+*.db
+bot/.env
+bot/__pycache__
