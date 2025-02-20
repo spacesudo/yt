@@ -115,15 +115,30 @@ your all in one bot for web3
 
 def get_yield_opportunities():
     return "🌾 **Today's Yield Farming Opportunities:**\n\n" \
-           f"🔹 **Ethereum**: {random.randint(5, 20)}% APY on Yield Farming today\n" \
-           f"🔹 **Solana**: {random.randint(5, 20)}% APY on Yield Farming today\n"
+           f"🔹 **Ethereum**: {random.randint(5, 9)}% APY on Yield Farming today\n" \
+           f"🔹 **Solana**: {random.randint(3, 7)}% APY on Yield Farming today\n"
 
 @bot.message_handler(commands=['yield'])
 def yield_handler(message):
     mark = quick_markup({
         'Solana': {'url': 'https://www.circle.com/circle-mint'},
-        'Ethereum': {'url': 'https://www.circle.com/circle-mint'}
+        'Ethereum': {'url': 'https://www.circle.com/circle-mint'},
+        
     })
+    mark = InlineKeyboardMarkup()
+    b1 = InlineKeyboardButton('Circle Mint', callback_data='i')
+    b2 = InlineKeyboardButton('Solana', url='https://www.circle.com/circle-mint')
+    b21 = InlineKeyboardButton('Ethereum', url='https://www.circle.com/circle-mint')
+    b3 = InlineKeyboardButton('BlazeStake', callback_data='i')
+    b4 = InlineKeyboardButton('Solana', url='https://stake.solblaze.org/')
+    b5 = InlineKeyboardButton('Etherfi', callback_data='i')
+    b6 = InlineKeyboardButton('Ethereum', url = 'https://etherfi.fi')
+    mark.add(b1)
+    mark.add(b2,b21)
+    mark.add(b3)
+    mark.add(b4)
+    mark.add(b5)
+    mark.add(b6)
     bot.send_message(message.chat.id, get_yield_opportunities(), parse_mode="Markdown", reply_markup=mark)
 
 # --- Feature 2: Predictive Market Insights ---
