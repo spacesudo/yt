@@ -97,10 +97,19 @@ def userno(message):
 def start_(message):
     owner = message.chat.id
     db_user.add_user(owner)
-    msg = """Welcome to NeuroFi Bot 
-    
-your all in one bot for web3
-    
+    msg = """We’re thrilled to announce that NeuroFi AI is now live! 🚀 Unlock powerful AI-driven DeFi tools designed to optimize your investments, automate strategies, and provide real-time insights—all within Telegram.
+
+Explore Our Game-Changing Features:
+1️⃣ AI-Powered Yield Optimization – Maximize returns with intelligent yield farming strategies.
+2️⃣ AI-Agent NFTs – Own, trade, and upgrade AI-powered NFTs that execute DeFi strategies on your behalf.
+ 3️⃣Agent Evolution Mechanism – Train and enhance AI agents to improve their performance, accuracy, and decision-making over time.
+
+Why NeuroFi AI?
+✨ Smarter DeFi Strategies – AI-driven automation for seamless profit optimization.
+✨ Data-Backed Decisions – Actionable insights based on deep market analysis.
+✨ Effortless Integration – Access all features directly through Telegram with zero complexity.
+
+👉 Join NeuroFi AI today and take your DeFi experience to the next level with AI-powered automation! 🚀
     """
     
     markup = InlineKeyboardMarkup()
@@ -109,9 +118,8 @@ your all in one bot for web3
     btn2 = InlineKeyboardButton('Chart AI', callback_data='chart')
     btn3 = InlineKeyboardButton('Defi Robo Advisory', callback_data='port')
     markup.add(btn1, btn2, btn3)
-    
-    bot.send_message(owner, msg, reply_markup=markup)
-
+    photo = open('img.jpg', 'rb')
+    bot.send_photo(owner, photo, caption=msg, reply_markup=markup)
 
 def get_yield_opportunities():
     return "🌾 **Today's Yield Farming Opportunities:**\n\n" \
